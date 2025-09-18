@@ -56,6 +56,17 @@ def update_todo(todo_id:int , title:str = None , description : str = None , comp
             return todo
     return None
                 
+               
+#delete http method
+@app.delete("/todos/{todo_id}")
+def delete_todo(todo_id: int):
+    for i , todo in enumerate(todos):
+        if todo["id"] == todo_id:
+            todos.pop(i)
+            return {"todo deleted succesfully"}
+    return {"todo not found"}
+            
+
 
 
 
